@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href = "style.css">
+    <title>Code Quiz highscore page</title>
+</head>
+
+<body class="container">
+    
+
+    <h1>HIGH SCORES</h1>
+    <p id = "form"></p>
+    <!--local storage data is here-->
+    <ul id="stored-score"></ul>
+    <!--disply stored scores -->
+
+    <!--two buttons-->
+    <div class="row">
+        <a id = "goback" href="index.html" type= "button" class="btn btn-primary">GO BACK</a>
+        
+        <button id = "clear" type= "button" class="btn btn-primary">CLEAR HIGHSCORES</button>
+    </div>        
+
+
+    <script >
+        //WHEN CLEAR HIGHSCORES, CLEAR THE RESULTS//
+    
+    var formEl=document.getElementById("stored-score");
+
+    clear.addEventListener("click",function(){
+    formEl.textContent = "";
+
+    })
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!--two buttons: clear highscore and go back, 
+    when click go back, will link to index page
+when click clear highscore, will clear the records-->
