@@ -163,70 +163,42 @@ console.log(score);
        qustioncontainerEl.classList.add("hide");
        resultpageEl.classList.remove("hide");
        rightorwrong.innerText = "";
-        scoreEl.innerText = "Your score is" + score ;
-
+        scoreEl.innerText = "Your score is : " + score ;
    }
    //need to delay one second for next question
    //when time is up or last question, go to enter detail page.
 
- //define the array of stored scores   
-var highscores = [];
+ //store the user initial and score into local storage
+   var submitScoreButton = document.querySelector("#submitscore")
+   console.log(submitScoreButton);
+   var storeUserInputs = [];
 
-//store the scores in the local storage
+   submitScoreButton.addEventListener("click",function(event){
+        event.preventDefault();
+        var initialEl = document.querySelector("#initial").value;
+        var user = {
+            initial : initialEl,
+            userScore : score, 
+        }
+        console.log(user);
+        if (initialEl === ""){
+            alert("Initial cannot be blank !");
+        }
+        else{
+            alert("Your initial and score are stored !");
+        }
 
-function storeScores(){
-    localStorage.setItem("scores",JSON.stringify(highscores));
-}
+        storeUserInputs.push(user);
+        console.log(storeUserInputs);
+        initialEl = "";
+        console.log(initialEl);
+        storeUserInput();
 
-var scoreForm = document.getElementById("stored-score");
-// renderscores
-function renderScores() {
-    // Clear score element 
-    scoreEl.innerHTML = "";
-    
-  
-    // Render a new li for each score
-    for (var i = 0; i < highscores.length; i++) {
-      var highscore = highscores[i];
-  
-      var li = document.createElement("li");
-      li.textContent = highscore;
-      
-      scoreForm.appendChild(li);
+
+   })
+
+   function storeUserInput(){
+        localStorage.setItem("user", JSON.stringify(storeUserInputs));
     }
-  }
+   //need to put every entry into an array
 
-  function init() {
-    // Get stored scores from localStorage
-    // Parsing the JSON string to an object
-    var storedTodos = JSON.parse(localStorage.getItem("todos"));
-  
-    // If todos were retrieved from localStorage, update the todos array to it
-    if (storedTodos !== null) {
-      todos = storedTodos;
-    }
-  
-    // Render todos to the DOM
-    renderTodos();
-  }
-
-  // When initial is submitted...
-  var initialEl = document.getElementById("initial");
-  
-  resultpageEl.addEventListener("submit", function(event) {
-    event.preventDefault();
-    console.log(initialEl.value);
-    // Return from function early if submitted todoText is blank
-    if (initialEl === "") {
-      alert("please enter your initial!")
-    }
-  
-    // Add new todoText to todos array, clear the input
-    highscores.push(initialEl);
-    initialEl.value = "";
-  
-    // Store updated todos in localStorage, re-render the list
-    storeScores();
-    renderScores();
-  });
-  

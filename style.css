@@ -45,10 +45,6 @@ p {
     display: none;
 }
 #resultpage{
-  
-    
-    
-    
     justify-content: center;
     align-items: center;
     max-width: 80%;
@@ -77,5 +73,14 @@ p {
 .btn{
     background-color: pink;
     
+}
+
+.highscorepage{
+    justify-content: center;
+    width: 100vw;
+    height: 50vw;
+    align-items: center;
+    margin: 20vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
     

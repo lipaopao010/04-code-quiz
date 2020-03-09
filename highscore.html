@@ -9,33 +9,25 @@
     <title>Code Quiz highscore page</title>
 </head>
 
-<body class="container">
+<body class = "highscorepage">
     
 
     <h1>HIGH SCORES</h1>
-    <p id = "form"></p>
-    <!--local storage data is here-->
-    <ul id="stored-score"></ul>
-    <!--disply stored scores -->
-
-    <!--two buttons-->
-    <div class="row">
-        <a id = "goback" href="index.html" type= "button" class="btn btn-primary">GO BACK</a>
-        
-        <button id = "clear" type= "button" class="btn btn-primary">CLEAR HIGHSCORES</button>
-    </div>        
-
-
-    <script >
-        //WHEN CLEAR HIGHSCORES, CLEAR THE RESULTS//
+    <p>
     
-    var formEl=document.getElementById("stored-score");
+        <!--local storage data is here-->
+        <ul id="stored-score"></ul>
+        <!--disply stored scores -->
 
-    clear.addEventListener("click",function(){
-    formEl.textContent = "";
+        <!--two buttons-->
+        
+        <a id = "goback" href="index.html" type= "button" class="btn btn-primary">GO BACK</a>
+            
+        <button id = "clear" type= "button" class="btn btn-primary">CLEAR HIGHSCORES</button>
+    </p>  
 
-    })
-    </script>
+
+    <script src="result.js"></script>
 </body>
 </html>
 
