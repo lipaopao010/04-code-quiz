@@ -36,22 +36,23 @@ p {
 }
 
 #start-container{
-        width: 800px;
-        margin: 0 auto;
-        margin-top: 40px;
-         
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+    text-align: center;    
 }
+
 .hide{
     display: none;
 }
+
 #resultpage{
     justify-content: center;
     align-items: center;
     max-width: 80%;
     margin: 0 auto;
-         
+    text-align: center;
 }
-
 
 .choicecontainer{
     display: flex;
