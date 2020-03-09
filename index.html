@@ -10,7 +10,7 @@
 </head>
 <body>  
 
-    <!--navigation bar containg time and link to highscore-->
+    <!--navigation bar containg time and link to highscore page-->
     <nav class="navbar navbar-light bg-light">
         <a class="highscore" href="highscore.html">View highscores</a>
 
@@ -20,12 +20,11 @@
     </nav>
 
   
-    
     <!--main contents-->
 
     <div class="container"> 
         <div id="game" class="justify-center flex-colum">
-        <!--this is where the question and answer is-->
+            <!--this is where the question and answer is-->
             <div id = "question-container" class= "hide">
                 <h2 id = "question">Question</h2>
                 <div class = "answer-buttons" >
@@ -36,12 +35,11 @@
                     
                 </div>
             </div>
+            <!--here to show right or wrong-->
             <div id="rightorwrong"></div>
-
         </div>
-        
 
-
+        <!--Here is the welcome page-->
         <div id = "start-container">
             <h1>
                 Welcome!
@@ -49,32 +47,18 @@
             <h2>
                 Please click start button to start your quiz!
             </h2>
-            <div id="quiz"></div>
             <button id="start-button">Start Quiz</button>
-            <div id="results"></div>
         </div>
-
-       
     </div>
 
     <!--Hide this until time is up or all questions answered-->
     <div id = "resultpage" class= "hide">
-        
-        
         <h1>All done!</h1>
         <h2 id= "score">Your score is </h2>
-        <div class="input-group">
-            <label >Put your initial below</label>
-            <input type="text" name="initial" id="initial" placeholder="initial" />
-            <button id = "submitscore">submit</button>
-        </div>
-
-        
-        
-
+        <p >Put your initial below</p>
+        <input type="text" name="initial" id="initial" placeholder="initial" />
+        <button id = "submitscore">submit</button>
     </div>
-    
-
     <script src="main.js"></script>
 </body>
 </html>
