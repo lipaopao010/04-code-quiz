@@ -27,10 +27,11 @@ function setTime() {
     secondsLeft--;
     timeEl.textContent = "Time : " + secondsLeft ;
 
-    if(secondsLeft === 0) {
+    if(secondsLeft <= 0) {
         //once seceond left is 0, a page shows"all done,
         //your final score is--,enter initials
       clearInterval(timerInterval);
+      timeEl.textContent = " Time : 0" ;
       sendMessage();
     }
 
@@ -220,6 +221,7 @@ optionContainer.addEventListener("click",function(event) {
         else{
             rightorwrong.innerText = "Wrong!" ;
             currentqustionIndex++;
+            secondsLeft = secondsLeft -10 ;
         }
         //then go to next question
     setTimeout(function(){setnextQueston();},1000);
