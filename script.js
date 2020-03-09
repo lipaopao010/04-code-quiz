@@ -2,7 +2,6 @@
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("results");
 var submitButton = document.getElementById("submit");
-
 var pTag = document.querySelector("p");
 score = 0
 
@@ -20,25 +19,10 @@ function sendMessage() {
 
   var finalScore = document.createElement ("ul");
   finalScore.innerHTML = "Your final score is" + score ;
-  
   pTag.appendChild(finalScore);
-  
-  
-
 }
 
 //call the function, when click start button
-
-//startQuiz.addEventListener("click",setTime());
-
-
-
-
-
-
-
-
-
 
 
 
