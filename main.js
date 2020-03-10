@@ -9,10 +9,8 @@ var optionbEl = document.getElementById("optionb");
 var optioncEl = document.getElementById("optionc");
 var optiondEl = document.getElementById("optiond");
 var optionContainer = document.querySelector(".answer-buttons");
-console.log(optionContainer);
 var rightorwrong = document.getElementById("rightorwrong");
 var resultpageEl = document.querySelector("#resultpage");
-console.log(resultpageEl);
 var score = 0;
 var questionCounter = 0;
 var scoreEl = document.getElementById("score");
@@ -28,13 +26,11 @@ function setTime() {
     timeEl.textContent = "Time : " + secondsLeft ;
 
     if(secondsLeft <= 0) {
-        //once seceond left is 0, a page shows"all done,
-        //your final score is--,enter initials
+        //when th seconds left is equal or smaller than zero,set the time to zero and go to result page
       clearInterval(timerInterval);
       timeEl.textContent = " Time : 0" ;
       sendMessage();
     }
-
   }, 1000);
 }
 
@@ -52,13 +48,7 @@ function startQuiz(){
 }
 
 
-//4. a function to set next question---?
-
-    //put the question in the question text area
-    
-
-
-// 5. create an array of qustions
+// 4. create an array of qustions
 var myQuestions = [
     {
         title: "What does HTML stand for?",
@@ -163,87 +153,61 @@ var myQuestions = [
         correctanswer:"for (i = 0; i < = 5; i++)"
     }
 ]
-console.log(currentqustionIndex);
 
-console.log(myQuestions[currentqustionIndex].title);
-
-var correct = myQuestions[1].answers;
-//console.log(correct);
-
-console.log(myQuestions[0].correctanswer);
-
-
+//5. a function to set next question
 
 function setnextQueston(){
-//6. loop thru the qustion array
-    
-        rightorwrong.innerText = "";
-        var question = myQuestions[currentqustionIndex];
-        console.log(currentqustionIndex);
-        if (currentqustionIndex<myQuestions.length){
-            var title = question.title;
-            console.log(title);
-            questionEl.innerText = title;
-            //console.log(question.);
-            optionaEl.innerText = question.answers[0];
-            console.log(optionaEl.innerText);
-            optionbEl.innerText = question.answers[1];
-            optioncEl.innerText = question.answers[2];
-            optiondEl.innerText = question.answers[3];
-            console.log(question);
-            console.log(optionaEl);
-            
-
-        
-            console.log(questionCounter);
-        
-            
+    rightorwrong.innerText = "";
+    var question = myQuestions[currentqustionIndex];
+    if (currentqustionIndex<myQuestions.length){
+        var title = question.title;
+        questionEl.innerText = title;
+        optionaEl.innerText = question.answers[0];
+        optionbEl.innerText = question.answers[1];
+        optioncEl.innerText = question.answers[2];
+        optiondEl.innerText = question.answers[3];    
         }
         else{
             sendMessage();
         }  
 }
     
-//this is to set next question
+
 optionContainer.addEventListener("click",function(event) {
     var element = event.target;
     questionCounter++;
-    console.log(element);
-    console.log(element.innerText);
-    console.log(questionCounter);
-    
-        if (element.innerText === myQuestions[currentqustionIndex].correctanswer ) {
-            rightorwrong.innerText = "Correct!";
-            score = score + 10;
-            currentqustionIndex++;
+    if (element.innerText === myQuestions[currentqustionIndex].correctanswer ) {
+        rightorwrong.innerText = "Correct!";
+        score = score + 10;
+        currentqustionIndex++;
         
-        }
-        else{
-            rightorwrong.innerText = "Wrong!" ;
-            currentqustionIndex++;
-            secondsLeft = secondsLeft -10 ;
-        }
-        //then go to next question
+    }
+    else{
+        rightorwrong.innerText = "Wrong!" ;
+        currentqustionIndex++;
+        secondsLeft = secondsLeft -10 ;
+    }
+        //then go to next question,delay one second
     setTimeout(function(){setnextQueston();},1000);
-    
 });
 
-console.log(score);
+//6. This is the result page
 
-   function sendMessage(){
-       //remove the hide class
-       qustioncontainerEl.classList.add("hide");
-       resultpageEl.classList.remove("hide");
-       rightorwrong.innerText = "";
-        scoreEl.innerText = "Your score is : " + score ;
-   }
-   //need to delay one second for next question
-   //when time is up or last question, go to enter detail page.
+function sendMessage(){
+    //remove the hide class
+    qustioncontainerEl.classList.add("hide");
+    resultpageEl.classList.remove("hide");
+    rightorwrong.innerText = "";
+    scoreEl.innerText = "Your score is : " + score ;
+}
 
- //store the user initial and score into local storage
+
+//7. store the user initial and score into local storage
    var submitScoreButton = document.querySelector("#submitscore")
-   console.log(submitScoreButton);
+   //console.log(submitScoreButton);
    var storeUserInputs = [];
+    
+   init();
 
    submitScoreButton.addEventListener("click",function(event){
         event.preventDefault();
@@ -259,18 +223,28 @@ console.log(score);
         else{
             alert("Your initial and score are stored !");
         }
-
         storeUserInputs.push(user);
-        console.log(storeUserInputs);
-        initialEl = "";
-        console.log(initialEl);
         storeUserInput();
-
-
+        goHighcorepage();
    })
+
+
+   function init(){
+    //get stored data from local storage
+    //parsing the JSON string to an object
+        var storedUser = JSON.parse(localStorage.getItem("user"));
+        console.log(storedUser);
+        if (storedUser !== null){
+            storeUserInputs = storedUser;
+            console.log(storeUserInputs);
+        }
+    }
 
    function storeUserInput(){
         localStorage.setItem("user", JSON.stringify(storeUserInputs));
     }
-   //need to put every entry into an array
+
+    function goHighcorepage(){
+        window.location.href = "highscore.html";
+    }
 
