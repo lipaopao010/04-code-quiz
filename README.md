@@ -15,3 +15,5 @@ THEN the game is over.
 WHEN the game is over,
 THEN the user can save my initials and score.
  
+ The link of the website is here:
+ https://lipaopao010.github.io/04-code-quiz/
